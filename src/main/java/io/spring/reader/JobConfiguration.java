@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by USER on 2017-11-24.
  */
-@Configuration
+//@Configuration
 public class JobConfiguration {
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
