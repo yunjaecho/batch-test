@@ -1,4 +1,4 @@
-package io.spring.readDatabase.domain;
+package io.spring.domain;
 
 import org.springframework.jdbc.core.RowMapper;
 
