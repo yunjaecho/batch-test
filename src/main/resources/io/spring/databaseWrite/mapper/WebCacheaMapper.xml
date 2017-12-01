@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.spring.databaseWrite.mapper.WebCacheVacctDataMapper">
+<mapper namespace="io.spring.databaseWrite.mapper.WebCacheaMapper">
 
     <!-- /* select dual */ -->
     <select id="getWebCacheVacctData" resultType="io.spring.databaseWrite.domain.WebCacheVacctData" parameterType="java.util.HashMap">
@@ -32,11 +32,16 @@
         ON M.ORG_BANK = L.ORG_BANK AND M.ORG_CD = L.ORG_CD AND M.VACCT_NO = L.VACCT_NO AND (CASE WHEN L.ERP_PROC_YN IS NULL THEN 'N' ELSE L.ERP_PROC_YN END) != 'Y'
         WHERE 1=1
         AND M.STAT_CD != '2'
-        AND M.ORG_BANK = #orgBank
-        AND M.ORG_CD = #orgCd
+        AND M.ORG_BANK = #{orgBank}
+        AND M.ORG_CD = #{orgCd}
         AND (CASE WHEN L.ERP_PROC_YN IS NULL THEN 'N' ELSE L.ERP_PROC_YN END) != 'Y'
         AND M.CUST_CD IS NOT NULL
         ORDER BY L.TR_DATE ASC, L.TR_SEQ ASC, L.STAT_CD ASC
+    </select>
+
+
+    <select id="getCustomer" resultType="io.spring.databaseWrite.domain.Customer">
+        SELECT * FROM CUSTOMER
     </select>
 
 </mapper>
