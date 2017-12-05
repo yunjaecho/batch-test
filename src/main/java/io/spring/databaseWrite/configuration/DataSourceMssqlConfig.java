@@ -1,5 +1,7 @@
 package io.spring.databaseWrite.configuration;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -23,9 +25,19 @@ import javax.sql.DataSource;
 @MapperScan(value="io.spring.databaseWrite.mapper", sqlSessionFactoryRef="sqlSessionFactoryMssql")
 public class DataSourceMssqlConfig {
     @Bean(name = "dataSourceMssql")
-    @ConfigurationProperties(prefix = "spring.mssql.datasource")
+    //@ConfigurationProperties(prefix = "spring.mssql.datasource")
     public DataSource dataSourceMssql() {
-        return DataSourceBuilder.create().build();
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:jtds:sqlserver://210.103.25.151:1433/iTMSNTData");
+        config.setDriverClassName("net.sourceforge.jtds.jdbc.Driver");
+        config.setUsername("SA");
+        config.setPassword("p@ssw0rd");
+        config.setMaximumPoolSize(3);
+        config.setAutoCommit(false);
+        config.setConnectionTestQuery("SELECT 1");
+        DataSource dataSource = new HikariDataSource(config);
+
+        return dataSource;
     }
 
     @Bean(name = "sqlSessionFactoryMssql")

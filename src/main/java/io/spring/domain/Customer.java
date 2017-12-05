@@ -36,9 +36,9 @@ public class Customer implements ResourceAware {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
 
-    @Override
-    public void setResource(Resource resource) {
-        this.resource = resource;
-    }
+//    @Override
+//    public void setResource(Resource resource) {
+//        this.resource = resource;
+//    }
 
 }

@@ -50,10 +50,10 @@ public class JobConfiguration {
     private String orgCd;
 
 
-    @Bean
-    public BatchConfigurer configurer(DataSource dataSourceMssql) {
-        return new DefaultBatchConfigurer(dataSourceMssql);
-    }
+//    @Bean
+//    public BatchConfigurer configurer(DataSource dataSourceMssql) {
+//        return new DefaultBatchConfigurer(dataSourceMssql);
+//    }
 
     @Bean
     public ListItemReader<WebCacheVacctData> webCacheItemReader() {
